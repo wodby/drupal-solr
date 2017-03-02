@@ -1,9 +1,9 @@
 -include env_make
 
-VERSION ?= 7-6.4
+VERSION ?= 7-6.3
 
 REPO = wodby/drupal-solr
-NAME = drupal-7-solr-6.4
+NAME = drupal-7-solr-6.3
 
 .PHONY: build test push shell run start stop logs clean release
 
