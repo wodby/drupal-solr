@@ -10,6 +10,7 @@ env:
     - LATEST_DRUPAL=8
     - LATEST_SOLR=6.4
   matrix:
+    - DRUPAL=7 SOLR=5.4
     - DRUPAL=7 SOLR=5.5
     - DRUPAL=7 SOLR=6.3
     - DRUPAL=7 SOLR=6.4
