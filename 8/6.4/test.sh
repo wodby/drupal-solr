@@ -2,27 +2,31 @@
 
 set -e
 
-if [[ ! -z $DEBUG ]]; then
+if [[ ! -z "${DEBUG}" ]]; then
   set -x
 fi
 
-HOST="solr"
-PORT="8983"
-CORE="core1"
+host="solr"
+core="core1"
+
+cid="$(
+	docker run -d --name "${NAME}" "${IMAGE}"
+)"
+trap "docker rm -vf ${cid} > /dev/null" EXIT
 
 solr() {
-    docker run --rm -i --link "${NAME}":"${HOST}" "${IMAGE}" "$@"
+    docker run --rm -i --link "${NAME}":"${host}" "${IMAGE}" "$@"
 }
 
 echo "Checking solr readiness..."
-solr make check-ready host=$HOST port=$PORT
+solr make check-ready host="${host}" max_try=12 wait_seconds=3
 echo "Creating new core..."
-solr make core=$CORE host=$HOST port=$PORT
+solr make core="${core}" host="${host}"
 echo "Checking if core has been created..."
-solr make ping core=$CORE host=$HOST port=$PORT
+solr make ping core="${core}" host="${host}"
 echo "Reloading core..."
-solr make reload core=$CORE host=$HOST port=$PORT
+solr make reload core="${core}" host="${host}"
 echo "Deleting core..."
-solr make delete core=$CORE host=$HOST port=$PORT
+solr make delete core="${core}" host="${host}"
 echo "Checking if core has been deleted..."
-solr bash -c "curl -sIN 'http://$HOST:$PORT/solr/$CORE/admin/ping' | head -n 1 | awk '{print \$2}' | grep 404"
+solr bash -c "curl -sIN 'http://${host}:8983/solr/${core}/admin/ping' | head -n 1 | awk '{print \$2}' | grep 404"

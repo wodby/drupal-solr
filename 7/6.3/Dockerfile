@@ -1,4 +1,4 @@
-FROM wodby/solr:6.3-2.0.0
+FROM wodby/solr:6.3
 
 ENV SEARCH_API_VER 7.x-1.12
 

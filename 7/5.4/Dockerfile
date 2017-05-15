@@ -1,6 +1,6 @@
-FROM wodby/solr:5.5
+FROM wodby/solr:5.4
 
-ENV SEARCH_API_VER 8.x-1.0-rc2
+ENV SEARCH_API_VER 7.x-1.12
 
 RUN wget -qO- https://ftp.drupal.org/files/projects/search_api_solr-${SEARCH_API_VER}.tar.gz \
     | tar xz -C /opt/docker-solr/scripts/ && \
