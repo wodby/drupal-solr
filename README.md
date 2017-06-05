@@ -21,6 +21,6 @@ To get full docker-based environment for Drupal see [Docker4Drupal](http://docke
 
 See at [wodby/solr](https://github.com/wodby/solr) 
 
-## Using in production
+## Deployment
 
-Deploy docker-based infrastructure for Drupal to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).
+Deploy docker-based Apache Solr for Drupal to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://cloud.wodby.com/stackhub/07a28bf6-6772-4ac2-9d3e-6b097e9038ff/overview).
