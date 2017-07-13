@@ -7,7 +7,7 @@
 
 ## Docker Images
 
-Images are built via [Travis CI](https://travis-ci.org/wodby/drupal-solr) and published on [Docker Hub](https://hub.docker.com/r/wodby/drupal-solr). 
+Images are based on [wodby/solr](https://github.com/wodby/solr), built via [Travis CI](https://travis-ci.org/wodby/drupal-solr) and published on [Docker Hub](https://hub.docker.com/r/wodby/drupal-solr).
 
 ## Versions
 
