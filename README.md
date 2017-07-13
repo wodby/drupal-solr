@@ -31,3 +31,7 @@ See [wodby/solr](https://github.com/wodby/solr)
 ## Complete Drupal Stack
 
 See [wodby/docker4drupal](https://github.com/wodby/docker4drupal)
+
+## Deployment
+
+Deploy Solr for Drupal to your server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://cloud.wodby.com/stackhub/07a28bf6-6772-4ac2-9d3e-6b097e9038ff).
