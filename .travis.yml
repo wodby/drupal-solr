@@ -8,7 +8,7 @@ services:
 env:
   global:
     - DOCKER_VERSION=17.06.2
-    - LATEST_VER=7.1
+    - LATEST_SOLR_VER=7.1
     - FROM_STABILITY_TAG=""
   matrix:
     - SOLR_VER=7.1 SEARCH_API_SOLR_VER=8.x-2.0-alpha2
@@ -30,11 +30,14 @@ script:
 after_success: |
   if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
     docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
-    make release
 
     if [[ -n "${TRAVIS_TAG}" ]]; then
-      make release STABILITY_TAG="${TRAVIS_TAG}"
-    elif [[ "${SOLR_VER}" == "${LATEST_VER}" ]]; then
+      export STABILITY_TAG="${TRAVIS_TAG}"
+    fi
+
+    make release
+
+    if [[ "${SOLR_VER}" == "${LATEST_SOLR_VER}" ]]; then
       make release TAG="latest"
     fi
   fi

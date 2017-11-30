@@ -16,18 +16,20 @@ This image is based on [wodby/solr](https://github.com/wodby/solr) and comes wit
 * [Travis CI builds](https://travis-ci.org/wodby/drupal-solr) 
 * [Docker Hub](https://hub.docker.com/r/wodby/drupal-solr)
 
-For better reliability we release images with stability tags (`wodby/drupal-solr:8-6.6-X.X.X`) which correspond to git tags. We **strongly recommend** using images only with stability tags. Below listed basic tags:
+[_(Dockerfile)_]: https://github.com/wodby/drupal-solr/tree/master/Dockerfile
 
-| Image tag         | Solr | Search API Solr |
-| ----------------- | ---- | --------------- |
-| `8-7.1`, `latest` | 7.1  | 8.x-2.0-alpha2  |
-| `8-7.0`           | 7.0  | 8.x-2.0-alpha2  |
-| `8-6.6`           | 6.6  | 8.x-1.2         |
-| `8-6.5`           | 6.5  | 8.x-1.2         |
-| `8-6.4`           | 6.4  | 8.x-1.2         |
-| `8-6.3`           | 6.3  | 8.x-1.2         |
-| `8-5.5`           | 5.5  | 8.x-1.2         |
-| `7-5.4`           | 5.4  | 7.x-1.12        |
+| Supported tags and respective `Dockerfile` links | Solr | Search API Solr |
+| ------------------------------------------------ | ---- | --------------- |
+| `8-7.1`, `latest` [_(Dockerfile)_]               | 7.1  | 8.x-2.0-alpha2  |
+| `8-7.0` [_(Dockerfile)_]                         | 7.0  | 8.x-2.0-alpha2  |
+| `8-6.6` [_(Dockerfile)_]                         | 6.6  | 8.x-1.2         |
+| `8-6.5` [_(Dockerfile)_]                         | 6.5  | 8.x-1.2         |
+| `8-6.4` [_(Dockerfile)_]                         | 6.4  | 8.x-1.2         |
+| `8-6.3` [_(Dockerfile)_]                         | 6.3  | 8.x-1.2         |
+| `8-5.5` [_(Dockerfile)_]                         | 5.5  | 8.x-1.2         |
+| `7-5.4` [_(Dockerfile)_]                         | 5.4  | 7.x-1.12        |
+
+For better reliability we additionally release images with stability tags (`wodby/drupal-solr:8-6.6-X.X.X`) which correspond to [git tags](https://github.com/wodby/drupal-solr/releases). We **strongly recommend** using images only with stability tags.
 
 ## Environment Variables
 

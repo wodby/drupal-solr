@@ -10,16 +10,18 @@ DRUPAL_VER := $(subst $(EXCEPT_FIRST_SYMBOL),,$(SEARCH_API_SOLR_VER))
 TAG ?= $(DRUPAL_VER)-$(SOLR_VER)
 FROM_TAG = $(SOLR_VER)
 
-ifneq ($(STABILITY_TAG),)
-    override TAG := $(TAG)-$(STABILITY_TAG)
-endif
-
 ifneq ($(FROM_STABILITY_TAG),)
     FROM_TAG := $(FROM_TAG)-$(FROM_STABILITY_TAG)
 endif
 
 REPO = wodby/drupal-solr
 NAME = drupal-solr-$(DRUPAL_VER)-$(SOLR_VER)
+
+ifneq ($(STABILITY_TAG),)
+ifneq ($(TAG),latest)
+    override TAG := $(TAG)-$(STABILITY_TAG)
+endif
+endif
 
 .PHONY: build test push shell run start stop logs clean release
 
