@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/wodby/drupal-solr.svg?branch=master)](https://travis-ci.org/wodby/drupal-solr)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/drupal-solr.svg)](https://hub.docker.com/r/wodby/drupal-solr)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/drupal-solr.svg)](https://hub.docker.com/r/wodby/drupal-solr)
+[![Docker Layers](https://images.microbadger.com/badges/image/wodby/drupal-solr.svg)](https://microbadger.com/images/wodby/drupal-solr)
 [![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Overview
