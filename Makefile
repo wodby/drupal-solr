@@ -1,7 +1,7 @@
 -include env_make
 
-SOLR_VER ?= 7.1
-SEARCH_API_SOLR_VER ?= 8.x-2.0-alpha2
+SOLR_VER ?= 7.2
+SEARCH_API_SOLR_VER ?= 8.x-2.0-alpha3
 
 # Get Drupal version (first symbol) from search api solr version.
 $(eval EXCEPT_FIRST_SYMBOL := $$$(SEARCH_API_SOLR_VER))
@@ -33,7 +33,7 @@ build:
 		--build-arg SEARCH_API_SOLR_VER=$(SEARCH_API_SOLR_VER) ./
 
 test:
-	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./test.sh
+	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./test
 
 push:
 	docker push $(REPO):$(TAG)

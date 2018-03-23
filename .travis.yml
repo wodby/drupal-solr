@@ -1,48 +1,24 @@
 language: bash
 
-sudo: required
-
 services:
   - docker
 
 env:
   global:
-    - DOCKER_VERSION=17.06.2
-    - LATEST_TAG=8-7.1
-    - FROM_STABILITY_TAG=""
+    - LATEST_TAG=8-7.2
   matrix:
-    - SOLR_VER=7.1 SEARCH_API_SOLR_VER=8.x-2.0-alpha2 TAG=8-7.1
-    - SOLR_VER=7.0 SEARCH_API_SOLR_VER=8.x-2.0-alpha2 TAG=8-7.0
-    - SOLR_VER=6.6 SEARCH_API_SOLR_VER=8.x-1.2 TAG=8-6.6
-    - SOLR_VER=6.5 SEARCH_API_SOLR_VER=8.x-1.2 TAG=8-6.5
-    - SOLR_VER=6.4 SEARCH_API_SOLR_VER=8.x-1.2 TAG=8-6.4
-    - SOLR_VER=6.3 SEARCH_API_SOLR_VER=8.x-1.2 TAG=8-6.3
-    - SOLR_VER=5.5 SEARCH_API_SOLR_VER=8.x-1.2 TAG=8-5.5
-    - SOLR_VER=5.4 SEARCH_API_SOLR_VER=7.x-1.12 TAG=7-5.4
-
-install:
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce="${DOCKER_VERSION}~ce-0~ubuntu"
+    - TAG=8-7.2 SOLR_VER=7.2 SEARCH_API_SOLR_VER=8.x-2.0-alpha3
+    - TAG=8-7.1 SOLR_VER=7.1 SEARCH_API_SOLR_VER=8.x-2.0-alpha3
+    - TAG=8-7.0 SOLR_VER=7.0 SEARCH_API_SOLR_VER=8.x-2.0-alpha3
+    - TAG=8-6.6 SOLR_VER=6.6 SEARCH_API_SOLR_VER=8.x-1.2
+    - TAG=8-6.5 SOLR_VER=6.5 SEARCH_API_SOLR_VER=8.x-1.2
+    - TAG=8-6.4 SOLR_VER=6.4 SEARCH_API_SOLR_VER=8.x-1.2
+    - TAG=8-6.3 SOLR_VER=6.3 SEARCH_API_SOLR_VER=8.x-1.2
+    - TAG=8-5.5 SOLR_VER=5.5 SEARCH_API_SOLR_VER=8.x-1.2
+    - TAG=7-5.4 SOLR_VER=5.4 SEARCH_API_SOLR_VER=7.x-1.12
 
 script:
   - make && make test
 
-after_success: |
-  if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
-    docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
-
-    if [[ -n "${TRAVIS_TAG}" ]]; then
-      export STABILITY_TAG="${TRAVIS_TAG}"
-    fi
-
-    make release
-
-    if [[ "${TAG}" == "${LATEST_TAG}" ]]; then
-      make release TAG="latest"
-    fi
-  fi
-
-notifications:
-  on_failure: never
-  slack:
-    secure: "bpMTjy6kkvuTUS8UDrFcLHvV2ohhUQWYLgtol0I864Re96NMcOfjLxLJKG9bTi9YqJ3ufCXObou8QDHxNLD+AJQFDVUaOfd7APMXNFifR5kOGaoh57Dra6z00Ei0pNCs0cxJ0JJ/54zFOtc2mCMeZBTZ6vqA8S5SfIQHbOa4UfCBiTO5+ZvHzHF2meYh7l1mh6r3KrrcKBCuluK9rPg52CnKACLjM+LiYVWVmj4H5u6WHoc7Vm4B7CSYkWDFRGcT24jqM2nkqQWbep8mpDJn8O780UEt1KoY1LzLeamLd/VpmD+zJjSFeuJHvFf62zOmfc1BbdxxY5z1btRund0AjpumZa+1X+LDHk5FZjmy4DGmqcNIlEoThShqdxIgeIttialugOq6QWOl3MYl2X5Gbq/C1ic6oHBFzDBYly0tnsLxXaywLimhy8kXfIyWqy4t9vo5ekTNggJPvBm6dLSqckic8mwBtNdnA4BgPFDrn3cOjGn80awPwdb69F5rHcwrwfEvdNEdcjtHTtkJdEblLv85NvM8osVnefJsBejlkUl+n7uDk44wfxOzk+S8H2j9PoW8Fx5a9DxpzN4PbpKRRx8nTUedTp8/I99eBRKh6EFWEfqrT+mLwp2dMVR6T7Mv/omz6dwO8tvDP6ADSiDUvWQIaeG/h1VRsAnGd5kPG8M="
+after_success:
+  - bash "${TRAVIS_BUILD_DIR}/travis_release"
