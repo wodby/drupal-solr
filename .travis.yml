@@ -6,6 +6,7 @@ services:
 env:
   global:
     - LATEST_TAG=8-7.2
+    - BASE_IMAGE_STABILITY_TAG=2.4.0
   matrix:
     - TAG=8-7.2 SOLR_VER=7.2 SEARCH_API_SOLR_VER=8.x-2.0-alpha3
     - TAG=8-7.1 SOLR_VER=7.1 SEARCH_API_SOLR_VER=8.x-2.0-alpha3
