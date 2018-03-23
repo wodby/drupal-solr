@@ -29,7 +29,7 @@ default: build
 
 build:
 	docker build -t $(REPO):$(TAG) \
-		--build-arg FROM_TAG=$(FROM_TAG) \
+		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
 		--build-arg SEARCH_API_SOLR_VER=$(SEARCH_API_SOLR_VER) ./
 
 test:
