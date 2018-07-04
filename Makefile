@@ -1,7 +1,7 @@
 -include env_make
 
-SOLR_VER ?= 7.2
-SEARCH_API_SOLR_VER ?= 8.x-2.0-alpha3
+SOLR_VER ?= 7.4
+SEARCH_API_SOLR_VER ?= 8.x-2.0
 
 # Get Drupal version (first symbol) from search api solr version.
 $(eval EXCEPT_FIRST_SYMBOL := $$$(SEARCH_API_SOLR_VER))
