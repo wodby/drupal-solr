@@ -4,6 +4,8 @@ services:
   - docker
 
 env:
+  global:
+    - BASE_IMAGE_STABILITY_TAG=2.5.0
   matrix:
     - SOLR_VER=7.4 SEARCH_API_SOLR_VER=8.x-2.0 TAGS=8-7.4,8-7,8,latest
     - SOLR_VER=7.3 SEARCH_API_SOLR_VER=8.x-2.0 TAGS=8-7.3
