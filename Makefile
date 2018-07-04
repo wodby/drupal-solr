@@ -33,7 +33,7 @@ build:
 		--build-arg SEARCH_API_SOLR_VER=$(SEARCH_API_SOLR_VER) ./
 
 test:
-	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./test
+	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./test.sh
 
 push:
 	docker push $(REPO):$(TAG)
